@@ -1,0 +1,38 @@
+# Deployment Section
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice                # Name of the deployment
+spec:
+  selector:
+    matchLabels:
+      app: recommendationservice             # Label selector for pods
+  template:
+    metadata:
+      labels:
+        app: recommendationservice           # Label assigned to pods
+    spec:
+      containers:
+      - name: service          # Container name
+        image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.8.0         # Docker image URL
+        ports:
+        - containerPort: 8080  # Port the app listens on
+        env:
+        - name: PORT
+          value: "8080"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice:3550"
+
+# Service Section
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice                # Service name
+spec:
+  type: ClusterIP          # Service type (ClusterIP, NodePort, LoadBalancer)
+  selector:
+    app: recommendationservice               # Label selector for pods
+  ports:
+  - port: 8080             # Service port (accessible internally)
+    targetPort: 8080       # Pod port (where the app runs)

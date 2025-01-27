@@ -1,0 +1,40 @@
+# Deployment Section
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cart  # Changed from redis_cart
+spec:
+  selector:
+    matchLabels:
+      app: redis-cart  # Changed from redis_cart
+  template:
+    metadata:
+      labels:
+        app: redis-cart  # Changed from redis_cart
+    spec:
+      containers:
+      - name: redis
+        image: redis:alpine
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: redis-data  # Changed from redis_data
+          mountPath: /data
+      volumes:
+        - name: redis-data  # Changed from redis_data
+          emptyDir: {}
+
+# Service Section
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cart  # Changed from redis_cart
+spec:
+  type: ClusterIP
+  selector:
+    app: redis-cart  # Changed from redis_cart
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379

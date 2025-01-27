@@ -1,0 +1,38 @@
+# Deployment Section
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice                # Name of the deployment
+spec:
+  selector:
+    matchLabels:
+      app: currencyservice             # Label selector for pods
+  template:
+    metadata:
+      labels:
+        app: currencyservice           # Label assigned to pods
+    spec:
+      containers:
+      - name: currencyservice          # Container name
+        image: gcr.io/google-samples/microservices-demo/currencyservice:v0.8.0         # Docker image URL
+        ports:
+        - containerPort: 7000  # Port the app listens on
+        env:
+        - name: PORT
+          value: "7000"    
+        - name: DISABLE_PROFILER
+          value: "1" 
+# Service Section
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: currencyservice                # Service name
+spec:
+  type: ClusterIP          # Service type (ClusterIP, NodePort, LoadBalancer)
+  selector:
+    app: currencyservice               # Label selector for pods
+  ports:
+  - protocol: TCP 
+    port: 7000             # Service port (accessible internally)
+    targetPort: 7000       # Pod port (where the app runs)
