@@ -1,0 +1,40 @@
+# Deployment Section
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+spec:
+  selector:
+    matchLabels:
+      app: cartservice
+  template:
+    metadata:
+      labels:
+        app: cartservice
+    spec:
+      containers:
+      - name: service
+        image: gcr.io/google-samples/microservices-demo/cartservice:v0.8.0
+        ports:
+        - containerPort: 7070
+        # Moved env INSIDE container spec
+        env:
+        - name: PORT
+          value: "7070"
+        - name: REDIS_ADDR
+          value: "redis-cart:6379"  # Changed service name to match DNS conventions
+
+# Service Section (no changes needed)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+spec:
+  type: ClusterIP
+  selector:
+    app: cartservice
+  ports:
+  - protocol: TCP 
+    port: 7070
+    targetPort: 7070

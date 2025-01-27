@@ -1,0 +1,37 @@
+# Deployment Section
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice
+spec:
+  selector:
+    matchLabels:
+      app: emailservice
+  template:
+    metadata:
+      labels:
+        app: emailservice           # Label assigned to pods
+    spec:
+      containers:
+      - name: service          # Container name
+        image: gcr.io/google-samples/microservices-demo/emailservice:v0.8.0         # Docker image URL
+        ports:
+        - containerPort: 8080  # Port the app listens on
+        env:
+        - name: PORT
+          value: "8080"
+
+# Service Section
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emailservice                # Service name
+spec:
+  type: ClusterIP          # Service type (ClusterIP, NodePort, LoadBalancer)
+  selector:
+    app: emailservice               # Label selector for pods
+  ports:
+  - protocol: TCP
+    port: 5000             # Service port (accessible internally)
+    targetPort: 8080       # Pod port (where the app runs)

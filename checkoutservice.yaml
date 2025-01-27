@@ -1,0 +1,49 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkoutservice                # Name of the deployment
+spec:
+  selector:
+    matchLabels:
+      app: checkoutservice             # Label selector for pods
+  template:
+    metadata:
+      labels:
+        app: checkoutservice           # Label assigned to pods
+    spec:
+      containers:
+      - name: service          # Container name
+        image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.8.0         # Docker image URL
+        ports:
+        - containerPort: 5050  # Port the app listens on
+        env:
+        - name: PORT
+          value: "5050"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice:3550"
+        - name: SHIPPING_SERVICE_ADDR
+          value: "shippingservice:50051"
+        - name: PAYMENT_SERVICE_ADDR
+          value: "paymentservice:50051"
+        - name: EMAIL_SERVICE_ADDR
+          value: "emailservice:5000"
+        - name: CURRENCY_SERVICE_ADDR
+          value: "currencyservice:7000"
+        - name: CART_SERVICE_ADDR
+          value: "cartservice:7070"
+
+#Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: checkoutservice                # Service name
+spec:
+  type: ClusterIP          # Service type (ClusterIP, NodePort, LoadBalancer)
+  selector:
+    app: checkoutservice               # Label selector for pods
+  ports:
+  - protocol: TCP
+    port: 5050             # Service port (accessible internally)
+    targetPort: 5050       # Pod port (where the app runs)
