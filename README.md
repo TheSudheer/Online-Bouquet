@@ -79,5 +79,5 @@ This project is forked from Google's [microservices-demo](https://github.com/Goo
 
 ## Upcoming Blog Post
 
-A detailed blog post is coming soon on how I developed and deployed this project. Stay tuned!
+A detailed blog post is coming soon on how I deployed this project. Stay tuned!
 
