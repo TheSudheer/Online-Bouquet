@@ -17,7 +17,7 @@ This project is a cloud-first microservices demo application designed to showcas
 
 ## Architecture Overview
 
-The application consists of multiple microservices, each responsible for a specific functionality within the e-commerce platform. These services communicate primarily via gRPC and are deployed on Kubernetes.
+The application consists of multiple microservices, each responsible for a specific functionality within the e-commerce platform. These services communicate primarily via gRPC (according to Google) and are deployed on Kubernetes.
 
 ## Microservices
 
