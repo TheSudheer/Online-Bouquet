@@ -1,37 +1,44 @@
-# Deployment Section
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adservice                # Name of the deployment
+  name: adservice
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: adservice             # Label selector for pods
+      app: adservice
   template:
     metadata:
       labels:
-        app: adservice           # Label assigned to pods
+        app: adservice
     spec:
       containers:
-      - name: service          # Container name
-        image: gcr.io/google-samples/microservices-demo/adservice:v0.8.0         # Docker image URL
+      - name: service
+        image: gcr.io/google-samples/microservices-demo/adservice:v0.8.0
         ports:
-        - containerPort: 9555  # Port the app listens on
+        - containerPort: 9555
         env:
         - name: PORT
-          value: "9555"          
+          value: "9555"
+        resources:
+          requests:
+            cpu: 100m       # 0.1 CPU core
+            memory: 128Mi   # 128 MiB of memory
+          limits:
+            cpu: 250m       # 0.25 CPU core
+            memory: 256Mi   # 256 MiB of memory
 
-# Service Section
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: adservice                # Service name
+  name: adservice
 spec:
-  type: ClusterIP          # Service type (ClusterIP, NodePort, LoadBalancer)
+  type: ClusterIP
   selector:
-    app: adservice               # Label selector for pods
+    app: adservice
   ports:
   - protocol: TCP
-    port: 9555             # Service port (accessible internally)
-    targetPort: 9555       # Pod port (where the app runs)
+    port: 9555
+    targetPort: 9555
+

@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: productcatalogservice                # Name of the deployment
 spec:
+  replicas: 2 
   selector:
     matchLabels:
       app: productcatalogservice             # Label selector for pods
@@ -20,6 +21,24 @@ spec:
         env:
         - name: PORT
           value: "3550"
+        livenessProbe:
+          initialDelaySeconds: 5
+          grpc:
+            port: 3550
+          periodSeconds: 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          grpc:
+            port: 3550
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m       # 0.1 CPU core
+            memory: 128Mi   # 128 MiB of memory
+          limits:
+            cpu: 250m       # 0.25 CPU core
+            memory: 256Mi   # 256 MiB of memory
+
 
 # Service Section
 ---

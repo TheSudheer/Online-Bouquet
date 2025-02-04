@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: redis-cart  # Changed from redis_cart
 spec:
+  replicas: 2 
   selector:
     matchLabels:
       app: redis-cart  # Changed from redis_cart
@@ -17,11 +18,28 @@ spec:
         image: redis:alpine
         ports:
         - containerPort: 6379
+        livenessProbe:
+          initialDelaySeconds: 5
+          tcpSocket:
+            port: 6379
+          periodSeconds: 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          tcpSocket:
+            port: 6379
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m       # 0.1 CPU core
+            memory: 128Mi   # 128 MiB of memory
+          limits:
+            cpu: 250m       # 0.25 CPU core
+            memory: 256Mi   # 256 MiB of memory
         volumeMounts:
-        - name: redis-data  # Changed from redis_data
+        - name: redis-data  
           mountPath: /data
       volumes:
-        - name: redis-data  # Changed from redis_data
+        - name: redis-data  
           emptyDir: {}
 
 # Service Section

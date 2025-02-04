@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: currencyservice                # Name of the deployment
 spec:
+  replicas: 2 
   selector:
     matchLabels:
       app: currencyservice             # Label selector for pods
@@ -21,7 +22,26 @@ spec:
         - name: PORT
           value: "7000"    
         - name: DISABLE_PROFILER
-          value: "1" 
+          value: "1"
+        livenessProbe:
+          initialDelaySeconds: 5
+          grpc:
+            port: 7000
+          periodSeconds: 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          grpc:
+            port: 7000
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m       # 0.1 CPU core
+            memory: 128Mi   # 128 MiB of memory
+          limits:
+            cpu: 250m       # 0.25 CPU core
+            memory: 256Mi   # 256 MiB of memory
+
+
 # Service Section
 ---
 apiVersion: v1
