@@ -1,0 +1,30 @@
+appName: paymentservice
+appImage: gcr.io/google-samples/microservices-demo/paymentservice
+appVersion: v0.8.0
+appReplicas: 1
+containerPort: 50051
+containerEnvVars:
+  - key: PORT
+    value: "50051"
+  - key: DISABLE_PROFILER
+    value: "1"
+
+
+servicePort: 50051
+serviceType: ClusterIP
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: paymentservice.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []

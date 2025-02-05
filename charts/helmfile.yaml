@@ -1,0 +1,61 @@
+releases:
+  - name: rediscart
+    chart: /home/sudheer/Online-Bouquet/charts/redis
+    values: 
+      - values/redis-values.yaml
+    set:
+      - name: appReplicas
+        value: "1"
+      - name: volumeName
+        value: "redis-cart-data"
+
+  - name: emailservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/email-custom-values.yaml
+
+  - name: cartservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/cartservice-custom-values.yaml    
+
+  - name: currencyservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/currency-custom-values.yaml 
+
+  - name: paymentservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/payment-custom-values.yaml
+
+  - name: recommendationservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/recommendationservice-custom-values.yaml
+
+  - name: productcatalogservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/productcatalogservice-custom-values.yaml
+
+  - name: shippingservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/shippingservice-custom-values.yaml
+
+  - name: adservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/adservice-custom-values.yaml
+
+  - name: checkoutservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/checkout-custom-values.yaml
+
+  - name: frontendservice
+    chart: /home/sudheer/Online-Bouquet/charts/microservices
+    values:
+      - values/frontend-custom-values.yaml
+

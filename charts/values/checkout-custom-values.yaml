@@ -1,0 +1,40 @@
+appName: checkoutservice
+appImage: gcr.io/google-samples/microservices-demo/checkoutservice
+appVersion: v0.8.0
+appReplicas: 1
+containerPort: 5050
+containerEnvVars:
+  - key: PORT
+    value: "5050"
+  - key: PRODUCT_CATALOG_SERVICE_ADDR
+    value: "productcatalogservice:3550"
+  - key: SHIPPING_SERVICE_ADDR
+    value: "shippingservice:50051"
+  - key: PAYMENT_SERVICE_ADDR
+    value: "paymentservice:50051"
+  - key: EMAIL_SERVICE_ADDR
+    value: "emailservice:5000"
+  - key: CURRENCY_SERVICE_ADDR
+    value: "currencyservice:7000"
+  - key: CART_SERVICE_ADDR
+    value: "cartservice:7070"
+
+
+servicePort: 5050
+serviceType: ClusterIP
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: checkoutservice.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
