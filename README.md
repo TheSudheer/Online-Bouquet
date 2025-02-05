@@ -14,8 +14,7 @@ This project is a cloud-first microservices demo application designed to showcas
 
 ---
 
-### **📌 Note**  
-🚀 **This project also uses Helm!** To use Helm, navigate to the `charts` directory at the top or click this link:  
+### **📌 Note**: This project also uses Helm!** To use Helm, navigate to the `charts` directory at the top or click this link:  
 👉 [Helm Charts](https://github.com/TheSudheer/Online-Bouquet/tree/main/charts)  
 
 ---
