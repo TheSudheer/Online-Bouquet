@@ -8,8 +8,10 @@ Watch a short video demonstrating the deployed application running live in a bro
 
 [Click to Watch Demo Video](https://youtu.be/qqYtg7rOb7E)
 
-Here is a Screenshot of working project running on a Browser:
-[Reference Image](screenshots/running-on-browser.png)
+Here is a screenshot of the project running successfully in a web browser:
+
+![Screenshot of Working Application](screenshots/running-on-browser.png)
+
 ---
 
 ## Table of Contents
@@ -158,7 +160,6 @@ To access the application:
 - **Minikube:** Run `minikube ip` or `minikube service frontend --url`
 - **Kind:** Use port forwarding or find node IP as per your setup
 - **Docker Desktop:** Use `localhost` or `127.0.0.1`
-- **Cloud (EKS, GKE, AKS):** Use the external IP of a worker node
 
 Then, navigate to `http://<NODE_IP>:<NODE_PORT>` in your web browser (e.g., `http://192.168.49.2:30007`).
 
