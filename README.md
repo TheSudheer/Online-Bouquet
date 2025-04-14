@@ -9,7 +9,7 @@ Watch a short video demonstrating the deployed application running live in a bro
 [Click to Watch Demo Video](https://youtu.be/qqYtg7rOb7E)
 
 Here is a Screenshot of working project running on a Browser:
-[Reference Image](screenshot/running-on-browser.png)
+[Reference Image](screenshots/running-on-browser.png)
 ---
 
 ## Table of Contents
