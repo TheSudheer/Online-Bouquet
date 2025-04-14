@@ -2,12 +2,14 @@
 
 This project demonstrates the deployment of a cloud-native, microservices-based e-commerce application (**Online Bouquet Shop**) onto a Minikube Kubernetes cluster. It showcases best practices for deploying, managing, and scaling distributed systems using Kubernetes manifests.
 
-## 🚀 Live Demo
+## Demo
 
 Watch a short video demonstrating the deployed application running live in a browser, accessed via Kubernetes NodePort:
 
-[Click to Watch Demo Video](screenshots/online-bouquet.mp4)
+[Click to Watch Demo Video](https://youtu.be/qqYtg7rOb7E)
 
+Here is a Screenshot of working project running on a Browser:
+[Reference Image](screenshot/running-on-browser.png)
 ---
 
 ## Table of Contents
