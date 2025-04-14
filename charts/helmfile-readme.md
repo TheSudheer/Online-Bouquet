@@ -1,5 +1,3 @@
-## **README.md (Helmfile Project README)**
-
 This repository contains a set of Helm charts managed with Helmfile. Below is a guide on common mistakes and best practices for using Helmfile.
 
 ## Table of Contents
@@ -88,10 +86,3 @@ If you encounter errors:
 4. **Search for error messages** in the Helmfile documentation or online communities.
 
 ---
-
-By following this guide and the best practices outlined above, you can avoid common Helmfile pitfalls and ensure smooth deployments of your Helm charts.
-```
-
----
-
-Use the guide and README as a reference for your projects. These documents cover naming conventions, common mistakes, and verification commands to help you diagnose and fix issues with Helmfile. Let me know if you need any further adjustments or additions!
