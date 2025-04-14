@@ -1,8 +1,5 @@
 ## **README.md (Helmfile Project README)**
 
-```markdown
-# Helmfile Project
-
 This repository contains a set of Helm charts managed with Helmfile. Below is a guide on common mistakes and best practices for using Helmfile.
 
 ## Table of Contents
