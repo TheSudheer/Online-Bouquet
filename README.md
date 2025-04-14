@@ -6,7 +6,7 @@ This project demonstrates the deployment of a cloud-native, microservices-based 
 
 Watch a short video demonstrating the deployed application running live in a browser, accessed via Kubernetes NodePort:
 
-[Click to Watch Demo Video](screenshots/online-bouquet.webm)
+[Click to Watch Demo Video](screenshots/online-bouquet.mp4)
 
 ---
 
@@ -78,7 +78,7 @@ The application comprises the following microservices:
 
 ## Technologies Used
 
-- **Orchestration:** Kubernetes (k8s)
+- **Orchestration:** Kubernetes (minikube)
 - **Container Runtime:** Docker (implicitly, via images)
 - **Configuration:** Kubernetes YAML
 - **Version Control:** Git / GitHub
