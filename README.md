@@ -1,5 +1,3 @@
-Here’s the updated project description with the required changes:  
-
 ### **Microservices Demo Application**  
 This project is a cloud-first microservices demo application designed to showcase the deployment and management of a web-based e-commerce app on Kubernetes. Users can browse items, add them to their cart, and proceed to purchase.  
 
